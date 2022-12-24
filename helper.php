@@ -1,27 +1,39 @@
 <?php
 
-session_start();
+function hashPassword($pwd)
+{
+    $hashed = md5('bisu-bc-ais_'.$pwd);
 
-require_once 'config.php';
-require_once 'helper.php';
+    return $hashed;
+}
 
+function getCSVFileData($file) 
+{
+    $data = array();
+    if (is_file($file)) {
+        $fd = fopen($file, "r");
+        if ($fd == null) {
+            die("Command 'fopen' failed for $file.");
+        }
+        $line = trim(fgets($fd));
+        $headers = explode(',', $line);
+        while (!feof($fd)) {
+            $line = trim(fgets($fd));
+            $token = explode(',', $line);
+            $row = array();
+            foreach ($headers as $i => $header) {
+                $row[$header] = $token[$i];
+            }
+            $data[] = $row;
+        }
+        fclose($fd);
+    }
 
-$_SESSION['logged'] = array(
-    'User_Key' => 1,
-    'User_Type' => 'admin',
-    'First_Name' => 'Admin',
-);
-//$_SESSION['logged'] = array();
+    return $data;
+}
 
-$_SESSION['news_list'] = array(
-    '1' => 'Hudyaka sa Pasko',
-    '2' => 'Foundation Day',
-    '3' => 'End VAW',
-    '4' => 'Civil Service Month',
-);
-//$_SESSION['news_list'] = array();
-
-if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
+/*
+function displayAlumni() {
     include_once 'models/sql_alumni.php';
     $sql = new SQL_Alumni;
     $course = 'bsit';
@@ -29,7 +41,9 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     $data = $sql->getAlumniData($course, $batch);
     $_GET['alumni'] = $data;
     require_once 'views/ui_alumni.php';
-    $_GET[''] = array();   
+    $_GET[''] = array(); 
+}
+
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'news'){
     include_once 'models/sql_news.php';
     $sql = new SQL_News;
@@ -62,7 +76,6 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     $_GET['news'] = array();
     $_GET['gallery'] = array();
 }
-
-$conn->close();
+*/
 
 ?>

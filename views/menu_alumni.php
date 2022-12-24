@@ -25,26 +25,6 @@
                         
                     </div>
                 </div>
-            </div>
-            <a href="index.php?menu=home" class="navbar-brand bg-primary py-2 px-4 mx-3 d-none d-lg-block">
-                <h1 class="text-white">BISU-BC AIS</h1>
-            </a>
-            <div class="navbar-nav me-auto py-0">
-                <div class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BSELEC</a>
-                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                        <a href="index.php" class="dropdown-item">Hudyaka 2022</a>
-                        <a href="index.php" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="index.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BSELEX</a>
-                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                        <a href="index.php" class="dropdown-item">Profile</a>
-                        <a href="index.php" class="dropdown-item">Logout</a>
-                        
-                    </div>
-                </div>
                 <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BSIT-FPSM</a>
                     <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
@@ -52,7 +32,29 @@
                         <a href="index.php" class="dropdown-item">Logout</a>
                     </div>
                 </div>
-                <a href="index.php?menu=add_alumni" class="nav-item nav-link ">ADD ALUMNI</a>
+            </div>
+            <a href="index.php?menu=home" class="navbar-brand bg-primary py-2 px-4 mx-3 d-none d-lg-block">
+                <h1 class="text-white">BISU-BC AIS</h1>
+            </a>
+            <div class="navbar-nav me-auto py-0">
+                <div class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BS-ELEC</a>
+                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
+                        <a href="index.php" class="dropdown-item">Hudyaka 2022</a>
+                        <a href="index.php" class="dropdown-item">Testimonial</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="index.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BS-ELEX</a>
+                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
+                        <a href="index.php" class="dropdown-item">Profile</a>
+                        <a href="index.php" class="dropdown-item">Logout</a>
+                        
+                    </div>
+                </div>
+                
+                <?php require_once 'views/menu_user.php' ?>
+
             </div>
         </div>
     </nav>
