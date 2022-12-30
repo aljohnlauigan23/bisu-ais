@@ -32,7 +32,7 @@
             <div class="navbar-nav me-auto py-0">
                 <?php require_once 'views/menu_news.php' ?>
                 <?php require_once 'views/menu_user.php' ?>
-                <?php if (!empty($_SESSION['logged']) && isset($_GET["menu"]) && $_GET["menu"] != "chat"): ?>
+                <?php if (!empty($_SESSION['logged']) && $_SESSION['logged']['User_Type'] != 'admin' && isset($_GET["menu"]) && $_GET["menu"] != "chat"): ?>
                     <a href="index.php?menu=chat" class="nav-item nav-link">
                         <i class="bi bi-chat-left-text"></i>
                         Chat

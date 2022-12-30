@@ -400,11 +400,23 @@ class SQL_Alumni extends DB_Connect {
         return $data;
     }
 
-    public function getBatchesPerCourse() 
+    public function getUserProfile($user_key)
     {
-        $data = array();
+        $sql = "
+            SELECT * 
+            FROM users as u
+            LEFT JOIN alumni as a on u.User_Key = a.User_Key
+            LEFT JOIN batches as b on a.Batch_Key = b.Batch_Key
+            LEFT JOIN courses as c on b.Course_Key = c.Course_Key
+            WHERE u.User_Key = $user_key
+        ";
+        $results = $this->getDataFromTable($sql);
+        $profile = array();
+        foreach ($results as $row) {
+            $profile = $row;
+        }
 
-        return $data;
+        return $profile;
     }
 
 }

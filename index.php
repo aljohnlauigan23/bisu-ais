@@ -89,7 +89,7 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     require_once 'views/ui_alumni.php';
 
 # News page    
-} else if(isset($_GET['menu']) && $_GET['menu'] == 'news'){
+} else if(isset($_GET['menu']) && $_GET['menu'] == 'news') {
     include_once 'models/sql_news.php';
     $sql = new SQL_News;
     $data = $sql->getNewsData();
@@ -98,7 +98,7 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     $_GET['news'] = array();
 
 # Gallery page
-} else if(isset($_GET['menu']) && $_GET['menu'] == 'gallery'){
+} else if(isset($_GET['menu']) && $_GET['menu'] == 'gallery') {
     include_once 'models/sql_gallery.php';
     $sql = new SQL_Gallery;
     $data = $sql->getGalleryData();
@@ -107,7 +107,51 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     $_GET['gallery'] = array();
 
 # Chat page
-} else if(isset($_GET['menu']) && $_GET['menu'] == 'chat'){
+} else if(isset($_GET['menu']) && $_GET['menu'] == 'chat') {
+    include_once 'models/sql_alumni.php';
+    $sql = new SQL_Alumni;
+    $user_key = $_SESSION['logged']['User_Key'];
+    $_SESSION['logged_profile'] = $sql->getUserProfile($user_key);
+    $_POST['batch_sel'] = $_SESSION['logged_profile']['Batch'];
+    $_POST['course_sel'] = $_SESSION['logged_profile']['Course_Name'];
+    $_POST['department_sel'] = $_SESSION['logged_profile']['Department'];
+
+    $_SESSION['chat_room'] = array();
+    $_SESSION['chat_room'][] = array(
+        'owner' => 'Bradd Pitt',
+        'ago' => '3 days ago',
+        'msg' => 'We work directly with our designers and suppliers, and sell direct to you, which means quality, exclusive products, at a price anyone can afford.',
+    );
+    $_SESSION['chat_room'][] = array(
+        'owner' => 'Angelina Jolie',
+        'ago' => '1 day ago',
+        'msg' => 'dhdshdfhdshThis is a very chat message. Sameplereyredfshsdhsdh onylsdaf .dsgajlprewgasga.sg.asgawtgaga!',
+    );
+    $_SESSION['chat_room'][] = array(
+        'owner' => 'You',
+        'ago' => '11 hrs ago',
+        'msg' => 'uiyfkfgkfmtfnrsbehrThis is a very chat message. Sameple onyl! We work directly with our designers and suppliers, and sell direct to you, which means quality, exclusive products, at a price anyone can afford.',
+    );
+    $_SESSION['chat_room'][] = array(
+        'owner' => 'You',
+        'ago' => '30 mins ago',
+        'msg' => 'WQEQWTDcbvv br ytujnsrgEvbsdFHRGnjfgbh bsdfbsvv sThis is a very chat message. Sameple onylsdaf .dsgajlprewgasga.sg.asgawtgaga!',
+    );
+    $_SESSION['chat_room'][] = array(
+        'owner' => 'Messa',
+        'ago' => '20 mins ago',
+        'msg' => 'WQEQWTDcbvv br ytujnsrgEvbsdFHRGnjfgbh bsdfbsvv sThis is a very chat message. Sameple onylsdaf .dsgajlprewgasga.sg.asgawtgaga!',
+    );
+    $_SESSION['chat_room'][] = array(
+        'owner' => 'You',
+        'ago' => '18 mins ago',
+        'msg' => 'Hi...',
+    );
+    $_SESSION['chat_room'][] = array(
+        'owner' => 'Angelina Jolie',
+        'ago' => '10 mins ago',
+        'msg' => 'Hello, there!',
+    );
     require 'views/ui_chat.php';
 
 # Home page
