@@ -34,26 +34,30 @@
                     <h3 class="text-primary text-uppercase mb-2">News/Activities</h3>
                     
                 </div>
-                <div class="row g-3">';
+                <div class="row g-3">
+                    <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                ';
 
-                foreach ($_GET['news'] as $news) {
-                    $html .=  '
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item d-flex flex-column bg-white p-3 pb-0">
-                            <div class="position-relative">
-                                <img class="img-fluid" src="alumni/'.$news['news_pic'].'.jpg" alt="">
-                                <div class="service-overlay">
-                                    <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-link text-primary"></i></a>
+                
+                    foreach ($_SESSION['news'] as $news) {
+                        $html .=  '
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="service-item d-flex flex-column bg-white p-3 pb-0">
+                                <div class="position-relative">
+                                    <img class="img-fluid" src="alumni/'.$news['news_pic'].'.jpg" alt="">
+                                    <div class="service-overlay">
+                                        <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-link text-primary"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center p-4">
+                                    <h4>'.$news['title'].'</h4>
                                 </div>
                             </div>
-                            <div class="text-center p-4">
-                                <h4>'.$news['title'].'</h4>
-                            </div>
-                        </div>
-                    </div>';
-                }
+                        </div>';
+                    }
 
     $html .= '
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +71,7 @@
             
                 </div>
                 <div class="row g-3">';
-                foreach ($_GET['gallery'] as $gallery) {
+                foreach ($_SESSION['gallery'] as $gallery) {
                     $html .=  '<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="row g-3">
                         <div class="col-12">

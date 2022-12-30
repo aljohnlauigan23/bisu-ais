@@ -25,6 +25,7 @@ class SQL_Gallery {
     
             )
         );
+        
         return $data;
     }
 }

@@ -51,6 +51,8 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
     $_GET['menu'] = 'home';
 }
 
+require 'init.php';
+
 # Alumni page
 if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     include_once 'models/sql_alumni.php';
@@ -90,21 +92,11 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
 
 # News page    
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'news') {
-    include_once 'models/sql_news.php';
-    $sql = new SQL_News;
-    $data = $sql->getNewsData();
-    $_GET['news'] = $data;
     require_once 'views/ui_home.php';
-    $_GET['news'] = array();
 
 # Gallery page
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'gallery') {
-    include_once 'models/sql_gallery.php';
-    $sql = new SQL_Gallery;
-    $data = $sql->getGalleryData();
-    $_GET['gallery'] = $data;
     require_once 'views/ui_home.php';
-    $_GET['gallery'] = array();
 
 # Chat page
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'chat') {
@@ -155,21 +147,8 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     require 'views/ui_chat.php';
 
 # Home page
-} else {
-    $_POST['home'] = 'home';
-    include_once 'models/sql_news.php';
-    $sql = new SQL_News;
-    $data = $sql->getNewsData();
-    $_GET['news'] = $data;
-
-    include_once 'models/sql_gallery.php';
-    $sql_gallery = new SQL_Gallery;
-    $data_gallery= $sql_gallery->getGalleryData();
-    $_GET['gallery'] = $data_gallery;
-    
+} else {    
     require_once 'views/ui_home.php';
-    $_GET['news'] = array();
-    $_GET['gallery'] = array();
 }
 
 ?>
