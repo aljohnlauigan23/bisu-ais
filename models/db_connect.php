@@ -21,17 +21,33 @@ class DB_Connect {
                     $row[$i] = "'$val'";
                 }
             }
-            $values = "VALUES (".implode(',', $row).")";
+            $values[] = "VALUES (".implode(',', $row).")";
         }
-        $sql = "INSERT INTO {$table} (".implode(',', $fields).") ".implode(', ', $values);
 
-        if ($this->db->query($sql) === true) {
-            $success = true;
-        } else {
-            $success = $this->db->error;
+        if (!empty($values)) {
+            # Only insert table data when has values
+            $sql = "INSERT INTO {$table} (".implode(',', $fields).") ".implode(', ', $values);
+            if ($this->db->query($sql) === true) {
+                $success = true;
+            } else {
+                $success = $this->db->error;
+            }
         }
 
         return $success;
+    }
+
+    public function getDataFromTable($sql)
+    {
+        $data = array();
+        $result = $this->db->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
+        return $data;
     }
 
 }

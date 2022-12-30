@@ -1,32 +1,16 @@
 <?php
 
-session_start();
-
-require_once 'config.php';
-require_once 'helper.php';
-
-
-$_SESSION['logged'] = array(
-    'User_Key' => 1,
-    'User_Type' => 'admin',
-    'First_Name' => 'Admin',
-);
-//$_SESSION['logged'] = array();
-
-$_SESSION['news_list'] = array(
-    '1' => 'Hudyaka sa Pasko',
-    '2' => 'Foundation Day',
-    '3' => 'End VAW',
-    '4' => 'Civil Service Month',
-);
-//$_SESSION['news_list'] = array();
+require_once 'init.php';
 
 if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     include_once 'models/sql_alumni.php';
     $sql = new SQL_Alumni;
-    $course = 'bsit';
-    $batch = 2021;
-    $data = $sql->getAlumniData($course, $batch);
+    $dept = 'ICT';
+    $course = 'BSCS';
+    $batch_key = 1;
+    $data = $sql->getAlumniData($course, $batch_key);
+    $_GET['course_sel'] = $_SESSION['courses'][$dept][$course];
+    $_GET['batch_sel'] = '2020 - 2021';
     $_GET['alumni'] = $data;
     require_once 'views/ui_alumni.php';
     $_GET[''] = array();   
@@ -62,7 +46,5 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     $_GET['news'] = array();
     $_GET['gallery'] = array();
 }
-
-$conn->close();
 
 ?>

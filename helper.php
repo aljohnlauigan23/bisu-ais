@@ -7,7 +7,7 @@ function hashPassword($pwd)
     return $hashed;
 }
 
-function getCSVFileData($file) 
+function getCSVFileData($file, $separator=",") 
 {
     $data = array();
     if (is_file($file)) {
@@ -16,10 +16,11 @@ function getCSVFileData($file)
             die("Command 'fopen' failed for $file.");
         }
         $line = trim(fgets($fd));
-        $headers = explode(',', $line);
+        $headers = explode($separator, $line);
         while (!feof($fd)) {
             $line = trim(fgets($fd));
-            $token = explode(',', $line);
+            if (empty($line)) continue;
+            $token = explode($separator, $line);
             $row = array();
             foreach ($headers as $i => $header) {
                 $row[$header] = $token[$i];

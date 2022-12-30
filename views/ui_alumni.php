@@ -6,8 +6,8 @@
     $html = '
     <div class="container-xxl px-0 py-5">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <h3 class="text-primary text-uppercase mb-2">Bachelor of Science in Computer Science</h3>
-            <h1 class="display-6 mb-0">Batch 2020 - 2021</h1>
+            <h3 class="text-primary text-uppercase mb-2">'.$_GET['course_sel'].'</h3>
+            <h1 class="display-6 mb-0">Batch '.$_GET['batch_sel'].'</h1>
         </div>
         <div class="row g-0">
     ';

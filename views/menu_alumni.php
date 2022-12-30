@@ -10,48 +10,27 @@
         <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
                 <a href="index.php?menu=home" class="nav-item nav-link ">Home</a>
-                <div class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" >BSIT</a>
-                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                        <a href="index.php" class="dropdown-item">Hudyaka 2022</a>
-                        <a href="index.php" class="dropdown-item">Testimonial</a>
+                <?php foreach ($_SESSION['departments'] as $dept => $dept_desc) : ?>
+                    <div class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" 
+                            title="<?php echo $dept_desc ?>" ><?php echo $dept ?>
+                        </a>
+                        <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
+                            <?php foreach ($_SESSION['courses'][$dept] as $course => $desc) : ?>
+                                <a href="index.php?menu=alumni&course=<?php echo $course ?>" class="dropdown-item"><?php echo $desc ?></a>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="index.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BSCS</a>
-                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                        <a href="index.php" class="dropdown-item">Profile</a>
-                        <a href="index.php" class="dropdown-item">Logout</a>
-                        
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="index.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BSIT-FPSM</a>
-                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                        <a href="index.php" class="dropdown-item">Profile</a>
-                        <a href="index.php" class="dropdown-item">Logout</a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
             <a href="index.php?menu=home" class="navbar-brand bg-primary py-2 px-4 mx-3 d-none d-lg-block">
                 <h1 class="text-white">BISU-BC AIS</h1>
             </a>
             <div class="navbar-nav me-auto py-0">
-                <div class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BS-ELEC</a>
-                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                        <a href="index.php" class="dropdown-item">Hudyaka 2022</a>
-                        <a href="index.php" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="index.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BS-ELEX</a>
-                    <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                        <a href="index.php" class="dropdown-item">Profile</a>
-                        <a href="index.php" class="dropdown-item">Logout</a>
-                        
-                    </div>
-                </div>
+                <a href="index.php" class="nav-item nav-link">
+                    <i class="bi bi-chat-left-text"></i>
+                    Chat
+                </a>
                 
                 <?php require_once 'views/menu_user.php' ?>
 
