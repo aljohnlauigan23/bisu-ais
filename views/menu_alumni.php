@@ -12,8 +12,11 @@
                 <a href="index.php?menu=home" class="nav-item nav-link ">Home</a>
                 <?php foreach ($_SESSION['departments'] as $dept => $dept_desc) : ?>
                     <div class="nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" 
-                            title="<?php echo $dept_desc ?>" ><?php echo $dept ?>
+                        <a href="" class="nav-link dropdown-toggle 
+                            <?php if ($dept == $_POST['department']): ?>
+                                active
+                            <?php endif; ?>
+                            " data-bs-toggle="dropdown" title="<?php echo $dept_desc ?>" ><?php echo $dept ?> Alumni
                         </a>
                         <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
                             <?php foreach ($_SESSION['courses'][$dept] as $course => $desc) : ?>

@@ -289,9 +289,8 @@ class SQL_Alumni extends DB_Connect {
         }        
     }
 
-    public function getBatchAlumniList($batch_key, $fields)
+    public function getBatchAlumniList($batch_key)
     {
-        $list = array();
         $sql = "
             SELECT * 
             FROM alumni as a
@@ -300,15 +299,8 @@ class SQL_Alumni extends DB_Connect {
             ORDER BY Last_Name
         ";
         $results = $this->getDataFromTable($sql);
-        foreach ($results as $i => $data) {
-            $row = array();
-            foreach ($fields as $col => $display) {
-                $row[] = isset($data[$col]) ? $data[$col] : '';
-            }
-            $list[$i] = $row;
-        }
 
-        return $list;
+        return $results;
     }
 
     public function getAlumniTableData()
@@ -334,14 +326,21 @@ class SQL_Alumni extends DB_Connect {
                 $table['table_info'] = $course_data['Course_Name'];;
                 $table['table_headers'] = array_values($fields);
                 $table['table_data'] = array();
-                $table['table_data'] = $this->getBatchAlumniList($batch_key, $fields);
+                $list = $this->getBatchAlumniList($batch_key);
+                foreach ($list as $i => $data) {
+                    $row = array();
+                    foreach ($fields as $col => $display) {
+                        $row[] = isset($data[$col]) ? $data[$col] : '';
+                    }
+                    $table['table_data'][] = $row;
+                }
             }
         }
 
         return $table;   
     }
 
-    public function getAlumniData($course, $batch) 
+    public function getAlumniData() 
     {
         $alumni = array(
             'profile_pic' => 'pic1',
@@ -353,8 +352,49 @@ class SQL_Alumni extends DB_Connect {
         );
 
         $data = array();
-        for ($i=1; $i<20; $i++) {
-            $data[] = $alumni;
+        $course_key = $this->getCourseKey($_POST['course_sel']);
+        if ($course_key > 0) {
+            $batch_key = $this->getBatchKey($course_key, $_POST['batch_sel']);
+            if ($batch_key > 0) {
+                $list = $this->getBatchAlumniList($batch_key);
+                $reverse = false;
+                $blank_pic = "./bisu-img/alumni/blank_profile_pic.jpg";
+                $row_cnt = 0;
+                foreach ($list as $i => $alumni) {
+                    $row = array();
+                    # Alumni Name
+                    $row['name'] = $alumni['Last_Name'].', '.$alumni['First_Name'];
+
+                    # Profile Picture
+                    $pic_fname = preg_replace('/(\s|\.)+/', '', $alumni['Last_Name']).'_'.preg_replace('/(\s|\.)+/', '', $alumni['First_Name']);
+                    $pic_fpath = "./bisu-img/alumni/{$_POST['course_data']['Course_Code']}/{$pic_fname}.jpg";
+                    //print "<pre>$pic_fpath\n";
+                    if (!is_file($pic_fpath)) {
+                        $pic_fpath = $blank_pic;
+                    }
+                    $row['picture'] = $pic_fpath;
+
+                    # Profile position
+                    $row['reverse'] = $reverse;
+                    $row_cnt++;
+                    if ($row_cnt > 1) {
+                        $row_cnt = 0;
+                        $reverse = !$reverse;
+                    }
+
+                    # Alumni Info
+                    $row['info'] = $alumni['Address'];
+
+                    # Alumni Info
+                    $company = empty($alumni['Company_Name']) ? 'COMPANY' : $alumni['Company_Name'];
+                    $row['desc'] = $alumni['Employment_Status'].' '.$alumni['Position'].' @'.$company.' - '.$alumni['Company_Address'];
+
+                    //print "<pre>";
+                    //print_r($row);
+                    $data[] = $row;
+                }
+
+            }
         }
 
         return $data;
