@@ -1,8 +1,5 @@
 <?php
 
-require_once 'config.php';
-require_once 'helper.php';
-
 $_SESSION['news_list'] = array(
     '1' => 'Hudyaka sa Pasko',
     '2' => 'Foundation Day',
@@ -20,5 +17,9 @@ foreach ($_SESSION['courses'] as $dept => $courses) {
     $_SESSION['departments'][$dept] = $desc;
 }
 $_SESSION['batches'] = $sql->getBatches();
+
+include_once 'models/sql_events.php';
+$sql = new SQL_Events;
+$_SESSION['event_list'] =  $sql->getEventList();
 
 ?>

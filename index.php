@@ -1,39 +1,52 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once 'config.php';
+require_once 'helper.php';
+
+function logout()
+{
+    unset($_SESSION['logged']);
+    require_once 'views/login.php';
+    exit;
+
+}
 
 # Login
 if (isset($_GET['menu']) && $_GET['menu'] == 'login') {
-    require 'init.php';
-    include_once 'models/db_connect.php';
-    $sql = new DB_Connect; 
-    
-    if (isset($_POST['username']) && $_POST['username'] !== '' && isset($_POST['password']) && $_POST['password'] !== '') {
-        $valid = $sql->isValidUser($_POST['username'], $_POST['password']);
-        if (!$valid) {
-            $_POST['danger'] = "Either user does not exist or username/password mismatched.";
+    $valid = false;
+    if (isset($_POST['login']) && $_POST['login'] == 'submit') {
+        $valid = false;
+        if (isset($_POST['username']) && $_POST['username'] !== '' && isset($_POST['password']) && $_POST['password'] !== '') {
             $_SESSION['logged'] = array();
+            include_once 'models/db_connect.php';
+            $sql = new DB_Connect; 
+            $valid = $sql->isValidUser($_POST['username'], $_POST['password']);
+            if (!$valid) {
+                $_POST['danger'] = "Either user does not exist or username/password mismatched.";
+            } else {
+                $_SESSION['logged'] = $_POST['logged'];
+                require 'init.php';
+            }
+        } else {
+            $_POST['danger'] = "Invalid Login.";
         }
-    } elseif (!empty($_POST)) {
-        $_POST['danger'] = "Invalid Login.";
-        $_SESSION['logged'] = array();
+    } elseif (!empty($_SESSION['logged'])) {
+        $valid = true;
     }
 
-    if (empty($_SESSION['logged'])) {
-        require_once 'views/login.php';
-        exit;
+    if (!$valid) {
+        logout();
     }
 }
 
 # Logout
-if (isset($_GET['logout']) && $_GET['logout'] == '1') {
-    unset($_GET);
-    unset($_POST);
-    require_once 'views/login.php';
-    exit;
+if (isset($_GET['logout']) && $_GET['logout'] == 1) {
+    logout();
 
-# Guest Mode
-} elseif (empty($_SESSION['logged'])) {
-    require_once 'init.php';
 } elseif (isset($_GET['menu']) && $_GET['menu'] == 'login') {
     $_GET['menu'] = 'home';
 }
@@ -99,6 +112,7 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
 
 # Home page
 } else {
+    $_POST['home'] = 'home';
     include_once 'models/sql_news.php';
     $sql = new SQL_News;
     $data = $sql->getNewsData();

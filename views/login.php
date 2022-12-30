@@ -26,6 +26,7 @@
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
+                            <input type="hidden" name="login" value="submit" />
                             <input type="password" id="password" name="password" class="form-control form-control-lg"
                             placeholder="Enter password" />
                             <label class="form-label" for="password">Password</label>

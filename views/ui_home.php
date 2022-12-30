@@ -4,8 +4,6 @@
     require_once 'views/menu.php';
 
     $html = '
-
-
         <div class="container-fluid hero-header bg-light py-5 mb-5" style="background-image: url(img/home_background.jpg); background-style: cover;">
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
@@ -28,139 +26,89 @@
                     </div>
                 </div>
             </div>
-        </div>    
-
+        </div>   
             
         <div class="container-xxl bg-light py-5 my-5" style="margin:0;">
-        <div class="container py-5">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h3 class="text-primary text-uppercase mb-2">News/Activities</h3>
-                
-            </div>
-            <div class="row g-3">';
-            foreach ($_GET['news'] as $news) {
-              $html .=  '<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item d-flex flex-column bg-white p-3 pb-0">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="alumni/'.$news['news_pic'].'.jpg" alt="">
-                            <div class="service-overlay">
-                                <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-link text-primary"></i></a>
+            <div class="container py-5">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h3 class="text-primary text-uppercase mb-2">News/Activities</h3>
+                    
+                </div>
+                <div class="row g-3">';
+
+                foreach ($_GET['news'] as $news) {
+                    $html .=  '
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item d-flex flex-column bg-white p-3 pb-0">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="alumni/'.$news['news_pic'].'.jpg" alt="">
+                                <div class="service-overlay">
+                                    <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-link text-primary"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4">
+                                <h4>'.$news['title'].'</h4>
                             </div>
                         </div>
-                        <div class="text-center p-4">
-                            <h4>'.$news['title'].'</h4>
+                    </div>';
+                }
+
+    $html .= '
+                </div>
+            </div>
+        </div>
+        <!-- News End -->
+
+        <!-- Gallery -->
+        <div class="container-xxl py-5" >
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h3 class="text-primary text-uppercase mb-2">Gallery</h3>
+            
+                </div>
+                <div class="row g-3">';
+                foreach ($_GET['gallery'] as $gallery) {
+                    $html .=  '<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="project-item">
+                                <img class="img-fluid"  src="alumni/'.$gallery['news_pic'].'.jpg" alt="">
+                                <a class="project-title h5 mb-0" href="alumni/'.$gallery['news_pic'].'.jpg" data-lightbox="project">
+                            '.$gallery['album_title'].'
+                                </a>
+                            </div>
                         </div>
+                    
                     </div>
                 </div>';
-            }
-        $html .= '</div>
-        </div>
-    </div>
-    <!-- News End -->
-
-
-    <!-- Gallery -->
-    <div class="container-xxl py-5" >
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h3 class="text-primary text-uppercase mb-2">Gallery</h3>
-         
+                }  
+                $html .= '</div>
             </div>
-            <div class="row g-3">';
-            foreach ($_GET['gallery'] as $gallery) {
-                $html .=  '<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="row g-3">
-                    <div class="col-12">
-                        <div class="project-item">
-                            <img class="img-fluid"  src="alumni/'.$gallery['news_pic'].'.jpg" alt="">
-                            <a class="project-title h5 mb-0" href="alumni/'.$gallery['news_pic'].'.jpg" data-lightbox="project">
-                           '.$gallery['album_title'].'
-                            </a>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>';
-            }  
-            $html .= '</div>
         </div>
-    </div>
 
-    <!-- Gallery end -->
-';
+        <!-- Gallery end -->
+    ';
 
- $html .= '   
-<!-- Testimonial Start -->
+    print $html;
+
+?>
+
+
+<!-- Events Start -->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <h3 class="text-primary text-uppercase mb-2">Upcoming Events</h3>
             
         </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="testimonial-item bg-white p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-1.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-white p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-2.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-white p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-3.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-white p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-4.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-            <div class="testimonial-item bg-white p-4">
-                <div class="d-flex align-items-center mb-4">
-                    <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-4.jpg" alt="">
-                    <div class="ms-4">
-                        <h5 class="mb-1">Rhea</h5>
-                        <span>Profession</span>
-                    </div>
-                </div>
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-            </div>
-        </div>
+        
+        <?php
+            require_once 'views/ui_events_carousel.php';
+        ?>  
     </div>
-</div> ';
+</div>
 
-    $html .= '
-    ';
-
-
-    print $html;
-
-    
+<?php    
     require_once 'views/footer.php';
-
-
 ?>
 

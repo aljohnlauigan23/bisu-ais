@@ -9,7 +9,11 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="index.php?menu=home" class="nav-item nav-link active">
+                <a href="index.php?menu=home" class="nav-item nav-link 
+                    <?php if (isset($_POST["home"]) && $_POST["home"] == "home"): ?>
+                        active
+                    <?php endif; ?>
+                    ">
                     <i class="bi bi-house-door-fill"></i>
                     Home
                 </a>
@@ -17,7 +21,7 @@
                     <i class="bi bi-people-fill"></i>
                     Alumni
                 </a>
-                <a href="index.php" class="nav-item nav-link">
+                <a href="index.php?menu=gallery" class="nav-item nav-link">
                     <i class="bi bi-images"></i>
                     Gallery
                 </a>

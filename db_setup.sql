@@ -71,12 +71,13 @@ CREATE TABLE alumni (
 --
 CREATE TABLE events (
   Event_Key int(10) unsigned NOT NULL auto_increment,
-  User_Key int(10) unsigned NOT NULL,
-  Title varchar(255) NOT NULL,
-  Short_Desc text NOT NULL,
-  Details longtext NOT NULL,
+  Event_Title varchar(255) NOT NULL,
+  Event_Start varchar(255) NOT NULL,
+  Event_End varchar(255) NOT NULL,
+  Event_Location text NOT NULL,
+  Event_Desc text NOT NULL,
   PRIMARY KEY  (Event_Key),
-  UNIQUE KEY tbl_unique (Title)
+  UNIQUE KEY tbl_unique (Event_Title)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 -- --------------------------------------------------------
 

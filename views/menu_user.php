@@ -15,9 +15,10 @@
             </div>
         ';
         if ($_SESSION['logged']['User_Type'] == 'admin') {
+            $is_active = isset($_POST['manage']) && $_POST['manage'] == 'manage' ? ' active' : '';
             $html .= '
             <div class="nav-item dropdown">
-                <a href="index.php" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <a href="index.php" class="nav-link dropdown-toggle'.$is_active.'" data-bs-toggle="dropdown">
                     <i class="bi bi-gear-fill"></i>
                     Manage
                 </a>

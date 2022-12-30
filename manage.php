@@ -1,9 +1,16 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once 'config.php';
+require_once 'helper.php';
 require 'init.php';
 
 if (isset($_GET['menu']) && !empty($_GET['menu'])) {
     $menu = $_GET['menu'];
+    $_POST['manage'] = 'manage';
     switch ($menu) {
         case 'courses':
             include_once 'models/sql_alumni.php';
@@ -68,6 +75,26 @@ if (isset($_GET['menu']) && !empty($_GET['menu'])) {
             require_once 'views/ui_manage_alumni.php';
             break;
         case 'events':
+            include_once 'models/sql_events.php';
+            $sql = new SQL_Events;
+            if (isset($_POST['add']) && $_POST['add'] == 'event') {
+                if (isset($_POST['Event_Title']) && $_POST['Event_Title'] != '' && 
+                    isset($_POST['Event_Start']) && $_POST['Event_Start'] != '' &&
+                    isset($_POST['Event_Location']) && $_POST['Event_Location'] != '' &&
+                    isset($_POST['Event_Desc']) && $_POST['Event_Desc'] != '') {
+
+                    //print "<pre>";
+                    //print_r($_POST);
+                    $event = array($_POST);
+                    $sql->addEvent($event);
+                    $_POST['success'] = 'The event has been successfully added.';
+                    require 'init.php';
+                } else {
+                    print "<pre>";
+                    print_r($_POST);
+                    $_POST['danger'] = 'Fill in the required fields';
+                }
+            }
             require_once 'views/ui_manage_events.php';
             break;
         case 'news':

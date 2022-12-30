@@ -53,11 +53,12 @@ class DB_Connect {
     public function isValidUser($username, $password)
     {
         $valid = false;
+        $_POST['logged'] = array();
         if (strtolower($username) == 'admin') {
             if ($password === ADMIN_PASS) {
                 $valid = true;
-                $_SESSION['logged'] = array(
-                    'User_Key' => 1,
+                $_POST['logged'] = array(
+                    'User_Key' => 0,
                     'User_Type' => 'admin',
                     'First_Name' => 'Admin',
                 );
@@ -72,7 +73,7 @@ class DB_Connect {
             $user = $this->getDataFromTable($sql);
             if (!empty($user)) {
                 $valid = true;
-                $_SESSION['logged'] = current($user);
+                $_POST['logged'] = current($user);
             }
         } 
 

@@ -43,13 +43,12 @@
                         </div>
                     </form>
                 </div>
-
-                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
-                    <?php
-                        require_once 'views/ui_table.php';
-                    ?>
-                </div>
             </div>
+                
+            <?php
+                require_once 'views/ui_table.php';
+            ?>
+            
         </div>
     </div>
     <!-- Contact End -->
