@@ -50,6 +50,35 @@ class DB_Connect {
         return $data;
     }
 
+    public function isValidUser($username, $password)
+    {
+        $valid = false;
+        if (strtolower($username) == 'admin') {
+            if ($password === ADMIN_PASS) {
+                $valid = true;
+                $_SESSION['logged'] = array(
+                    'User_Key' => 1,
+                    'User_Type' => 'admin',
+                    'First_Name' => 'Admin',
+                );
+            }
+        } else {
+            $sql = "
+                SELECT * 
+                FROM users 
+                WHERE Password = '".hashPassword($password)."'
+                    AND User_Name = '".$username."'
+                ";
+            $user = $this->getDataFromTable($sql);
+            if (!empty($user)) {
+                $valid = true;
+                $_SESSION['logged'] = current($user);
+            }
+        } 
+
+        return $valid;
+    }
+
 }
 
 ?>

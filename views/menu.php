@@ -26,12 +26,14 @@
                 <h1 class="text-white">BISU-BC AIS</h1>
             </a>
             <div class="navbar-nav me-auto py-0">
-                <a href="index.php" class="nav-item nav-link">
-                    <i class="bi bi-chat-left-text"></i>
-                    Chat
-                </a>
                 <?php require_once 'views/menu_news.php' ?>
                 <?php require_once 'views/menu_user.php' ?>
+                <?php if (!empty($_SESSION['logged']) && isset($_GET["menu"]) && $_GET["menu"] != "chat"): ?>
+                    <a href="index.php?menu=chat" class="nav-item nav-link">
+                        <i class="bi bi-chat-left-text"></i>
+                        Chat
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>

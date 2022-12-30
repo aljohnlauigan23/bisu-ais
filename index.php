@@ -1,6 +1,42 @@
 <?php
 
-require_once 'init.php';
+
+# Login
+if (isset($_GET['menu']) && $_GET['menu'] == 'login') {
+    require 'init.php';
+    include_once 'models/db_connect.php';
+    $sql = new DB_Connect; 
+    
+    if (isset($_POST['username']) && $_POST['username'] !== '' && isset($_POST['password']) && $_POST['password'] !== '') {
+        $valid = $sql->isValidUser($_POST['username'], $_POST['password']);
+        if (!$valid) {
+            $_POST['danger'] = "Either user does not exist or username/password mismatched.";
+            $_SESSION['logged'] = array();
+        }
+    } elseif (!empty($_POST)) {
+        $_POST['danger'] = "Invalid Login.";
+        $_SESSION['logged'] = array();
+    }
+
+    if (empty($_SESSION['logged'])) {
+        require_once 'views/login.php';
+        exit;
+    }
+}
+
+# Logout
+if (isset($_GET['logout']) && $_GET['logout'] == '1') {
+    unset($_GET);
+    unset($_POST);
+    require_once 'views/login.php';
+    exit;
+
+# Guest Mode
+} elseif (empty($_SESSION['logged'])) {
+    require_once 'init.php';
+} elseif (isset($_GET['menu']) && $_GET['menu'] == 'login') {
+    $_GET['menu'] = 'home';
+}
 
 # Alumni page
 if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
@@ -56,6 +92,10 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     $_GET['gallery'] = $data;
     require_once 'views/ui_home.php';
     $_GET['gallery'] = array();
+
+# Chat page
+} else if(isset($_GET['menu']) && $_GET['menu'] == 'chat'){
+    require 'views/ui_chat.php';
 
 # Home page
 } else {

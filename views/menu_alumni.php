@@ -30,12 +30,11 @@
                 <h1 class="text-white">BISU-BC AIS</h1>
             </a>
             <div class="navbar-nav me-auto py-0">
-                <a href="index.php" class="nav-item nav-link">
+                <?php require_once 'views/menu_user.php' ?>
+                <a href="chat.php" class="nav-item nav-link">
                     <i class="bi bi-chat-left-text"></i>
                     Chat
                 </a>
-                
-                <?php require_once 'views/menu_user.php' ?>
 
             </div>
         </div>

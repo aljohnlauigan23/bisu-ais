@@ -1,8 +1,7 @@
 <?php
     $html = '';
-
     # User Account
-    if (!empty($_SESSION['logged'])) {
+    if (!empty($_SESSION['logged']) && isset($_GET["menu"]) && $_GET["menu"] != "login") {
         # Logged
         $html .= '
             <div class="nav-item dropdown">

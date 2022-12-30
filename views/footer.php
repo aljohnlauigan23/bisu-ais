@@ -3,7 +3,7 @@
     <div class="container-fluid footer position-relative bg-primary text-white-50 mt-5 py-5 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="row g-5 py-5">
             <div class="col-lg-6 pe-lg-5">
-                <a href="index.html" class="navbar-brand">
+                <a href="index.php" class="navbar-brand">
                     <h1 class="display-5 text-light">BISU-BC AIS</h1>
                 </a>
                 <p>Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam  sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>

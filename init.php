@@ -1,17 +1,7 @@
 <?php
 
-session_start();
-
 require_once 'config.php';
 require_once 'helper.php';
-
-
-$_SESSION['logged'] = array(
-    'User_Key' => 1,
-    'User_Type' => 'admin',
-    'First_Name' => 'Admin',
-);
-//$_SESSION['logged'] = array();
 
 $_SESSION['news_list'] = array(
     '1' => 'Hudyaka sa Pasko',
