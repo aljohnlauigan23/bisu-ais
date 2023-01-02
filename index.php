@@ -72,6 +72,7 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
             $_POST['course_sel'] = $batch['Course_Code'];
         } else {
             $_POST['warning'] = 'No Alumni data available yet.';
+            $_POST['department'] = current(array_keys($_SESSION['departments']));
         }
 
         # Course clicked via Menu
@@ -80,8 +81,12 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
         } 
     }
 
-    $_POST['course_data'] = $sql->getCourseData($_POST['course_sel']);
-    $data = $sql->getAlumniData();
+    $data = array();
+    if (isset($_POST['course_sel'])) {
+        $_POST['course_data'] = $sql->getCourseData($_POST['course_sel']);
+        $data = $sql->getAlumniData();
+    }
+
     if (empty($data)) {
         $_POST['warning'] = 'No Alumni data available for the selected batch.';
     } else {

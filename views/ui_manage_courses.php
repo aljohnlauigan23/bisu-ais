@@ -5,6 +5,9 @@
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">
+
+            <?php require_once 'views/ui_alert.php' ?>
+            
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="text-primary text-uppercase mb-2">Manage</p>
                 <h1 class="display-6 mb-5">COURSES</h1>

@@ -13,7 +13,7 @@
                 <?php foreach ($_SESSION['departments'] as $dept => $dept_desc) : ?>
                     <div class="nav-item dropdown">
                         <a href="" class="nav-link dropdown-toggle 
-                            <?php if ($dept == $_POST['department']): ?>
+                            <?php if (isset($_POST['department']) && $dept == $_POST['department']): ?>
                                 active
                             <?php endif; ?>
                             " data-bs-toggle="dropdown" title="<?php echo $dept_desc ?>" ><?php echo $dept ?> Alumni
