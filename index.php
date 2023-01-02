@@ -153,8 +153,6 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
 
 # Home page
 } else {    
-    print "<pre>";
-    print_r($_SESSION['event_list']);
     require_once 'views/ui_home.php';
 }
 
