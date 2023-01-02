@@ -100,8 +100,11 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     require_once 'views/ui_home.php';
 
 # Gallery page
-} else if(isset($_GET['menu']) && $_GET['menu'] == 'gallery') {
-    require_once 'views/ui_home.php';
+} else if(isset($_GET['menu']) && $_GET['menu'] == 'gallery') {    
+    include_once 'models/sql_gallery.php';
+    $sql = new SQL_Gallery;
+    $_POST['gallery'] = $sql->getGalleryData();
+    require_once 'views/ui_gallery.php';
 
 # Chat page
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'chat') {

@@ -3,7 +3,7 @@
     require_once 'views/menu.php';
 ?>
 
-        <div class="container-fluid hero-header bg-light py-5 mb-5" style="background-image: url(img/home_background.jpg); background-style: cover;">
+        <div class="container-fluid hero-header bg-light py-5 mb-5" style="background-image: url(bisu-img/home_background-adjusted.jpg); background-style: cover;">
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
@@ -26,7 +26,8 @@
                 </div>
             </div>
         </div>   
-            
+
+<center>
         <!-- News -->
         <div class="container-xxl bg-light py-5 my-5" style="margin:0;">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px; padding-top: 50px;">
@@ -37,19 +38,6 @@
             ?>  
         </div>
         <!-- News end -->
-
-        <!-- Gallery -->
-        <div class="container-xxl py-5" >
-            <div class="container">
-                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                    <h3 class="text-primary text-uppercase mb-2">Gallery</h3>
-    
-                </div>
-                <div class="row g-3">
-            </div>
-            </div>
-        </div>
-        <!-- Gallery end -->
 
         <!-- Events Start -->
         <div class="container-xxl py-5">
@@ -63,6 +51,8 @@
                 ?>  
             </div>
         </div>
+
+</center>
 
 <?php    
     require_once 'views/footer.php';

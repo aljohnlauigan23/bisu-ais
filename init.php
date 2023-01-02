@@ -32,9 +32,6 @@ include_once 'models/sql_news.php';
 $sql = new SQL_News;
 $_SESSION['news_list'] = $sql->getNewsList();
 
-include_once 'models/sql_gallery.php';
-$sql = new SQL_Gallery;
-$_SESSION['gallery'] = $sql->getGalleryData();
 
 
 ?>
