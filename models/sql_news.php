@@ -36,8 +36,11 @@ class SQL_News extends DB_Connect {
     public function getNewsList()
     {
         $sql = "
-            SELECT *
-            FROM news
+            SELECT 
+                n.*,
+                if (n.User_Key > 0, concat(First_Name, ' ', Last_Name), 'Admin') as News_Author
+            FROM news as n
+            LEFT JOIN users as u ON n.User_Key = u.User_Key
             ORDER BY News_Date, News_Title
         ";
         $list = $this->getDataFromTable($sql);
