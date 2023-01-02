@@ -30,6 +30,19 @@
                 </div>
             </div>
             ';
+        } elseif ($_SESSION['logged']['User_Key'] > 0) {
+            $is_active = isset($_POST['manage']) && $_POST['manage'] == 'manage' ? ' active' : '';
+            $html .= '
+            <div class="nav-item dropdown">
+                <a href="index.php" class="nav-link dropdown-toggle'.$is_active.'" data-bs-toggle="dropdown">
+                    <i class="bi bi-gear-fill"></i>
+                    Manage
+                </a>
+                <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
+                    <a href="manage.php?menu=news" class="dropdown-item">News</a>
+                </div>
+            </div>
+            ';
         }
     } else {
         # Guest Mode

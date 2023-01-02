@@ -30,7 +30,7 @@ $_SESSION['event_list'] =  $sql->getEventList();
 
 include_once 'models/sql_news.php';
 $sql = new SQL_News;
-$_SESSION['news'] = $sql->getNewsData();
+$_SESSION['news_list'] = $sql->getNewsList();
 
 include_once 'models/sql_gallery.php';
 $sql = new SQL_Gallery;

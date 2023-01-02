@@ -105,6 +105,50 @@ if (isset($_GET['menu']) && !empty($_GET['menu'])) {
             require_once 'views/ui_manage_events.php';
             break;
         case 'news':
+            include_once 'models/sql_news.php';
+            $sql = new SQL_News;
+            if (isset($_POST['add']) && $_POST['add'] == 'news') {
+                if (isset($_POST['News_Title']) && $_POST['News_Title'] != '' && 
+                    isset($_POST['News_Date']) && $_POST['News_Date'] != '' &&
+                    isset($_POST['News_Desc']) && $_POST['News_Desc'] != '') {
+                    if (isset($_FILES['news_image']) && !empty($_FILES['news_image']['tmp_name'])) {
+                        $news_img = $_FILES['news_image']['tmp_name'];
+                        if (is_file($news_img)) {
+                            $news = $_POST;
+                            $news['News_Image'] = $_FILES['news_image']['name'];
+                            $dest_img = './bisu-img/news/'.$news['News_Image'];
+                            copy($news_img, $dest_img);
+                            if (is_file($dest_img)) {
+                                $desc_file = './bisu-img/news/'.preg_replace('/\.([^\.]+)$/', '.html', $news['News_Image']);
+                                file_put_contents($desc_file, $news['News_Desc']);
+                                if (is_file($desc_file)) {
+                                    $news['News_Desc'] = basename($desc_file);
+                                    $news['User_Key'] = $_SESSION['logged']['User_Key'];
+                                    $res = $sql->addNews(array($news));
+                                    if ($res === true) {
+                                        $_POST['success'] = 'The news has been successfully added.';
+                                        require 'init.php';
+                                    } else {
+                                        $_POST['danger'] = 'An error is encountered when saving the news.';
+                                    }
+                                } else {
+                                    $_POST['danger'] = 'An error is encountered when saving the news description.';
+                                }
+                            } else {
+                                $_POST['danger'] = 'An error is encountered when uploading the news image.';
+                            }
+                        } else {
+                            $_POST['danger'] = 'An error is encountered when uploading the news image.';
+                        }
+                    } else {
+                        $_POST['danger'] = 'Select image for the news.';
+                    }
+                } else {
+                    $_POST['danger'] = 'Fill in the required fields';
+                }
+            }
+            //print "<pre>";
+            //print_r($_SESSION['news_list']);
             require_once 'views/ui_manage_news.php';
             break;
         default:

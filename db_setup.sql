@@ -1,6 +1,6 @@
 -- CREATE user 'bisu'@'localhost' identified by 'B!su';
 -- CREATE database bisu_ais;
--- USE bisu_ais;
+USE bisu_ais;
 
 --
 -- Table structure for table courses
@@ -87,16 +87,17 @@ CREATE TABLE events (
 CREATE TABLE news (
   News_Key int(10) unsigned NOT NULL auto_increment,
   User_Key int(10) unsigned NOT NULL,
-  Title varchar(255) NOT NULL,
-  Short_Desc text NOT NULL,
-  Details longtext NOT NULL,
+  News_Title varchar(255) NOT NULL,
+  News_Date varchar(255) NOT NULL,
+  News_Image varchar(255) NOT NULL,
+  News_Desc varchar(255) NOT NULL,
   PRIMARY KEY  (News_Key),
-  UNIQUE KEY tbl_unique (Title)
+  UNIQUE KEY tbl_unique (News_Title)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 -- --------------------------------------------------------
 
-CREATE USER [IF NOT EXISTS] 'bisu'@'localhost' 
-IDENTIFIED BY 'B!su';
+-- CREATE USER [IF NOT EXISTS] 'bisu'@'localhost' 
+-- IDENTIFIED BY 'B!su';
 
 GRANT ALL PRIVILEGES ON bisu_ais.* TO 'bisu'@'localhost';
 FLUSH PRIVILEGES;

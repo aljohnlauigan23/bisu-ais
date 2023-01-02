@@ -1,53 +1,47 @@
 <?php
 
-class SQL_News {
+require_once 'models/db_connect.php';
 
-    function __construct(){
+class SQL_News extends DB_Connect {
 
+    public $news_tbl = array(
+        'User_Key',
+        'News_Title',
+        'News_Date',
+        'News_Desc',
+        'News_Image',
+    );
+
+    public function __construct() 
+    {
+        Parent::__construct();
     }
 
-    public function getNewsData() {
-        $data = array(
-            array(
-                'news_pic' => 'img6',
-                'title' => 'HUDYAKA 2022',
-                'desc' => '‘𝑻𝒊𝒔 𝒕𝒉𝒆 𝒔𝒆𝒂𝒔𝒐𝒏 𝒕𝒐 𝒃𝒆 𝒋𝒐𝒍𝒍𝒚, 𝑩𝑰𝑺𝑼𝒂𝒏𝒔! ❄️🦌
-                Its the most wonderful time of the year again and we are now feeling the cold Christmas breeze. 🥶 Before we end this fruitful year, let us celebrate together our success and achievements.
-                Join us as we celebrate the long-awaited Christmas party ug mag 𝑯𝑼𝑫𝒀𝑨𝑲𝑨 kitang tanan as we all once again recapture the spirit of Christmas.
-                Well see you there, BISUans! ☃️',
-                'date' => 'November-22-2022',
-                'poster' => 'Eric Maglajos'
-            ),array(
-                'news_pic' => 'img7',
-                'title' => 'info1',
-                'desc' => 'This is a description',
-                'date' => 'November-22-2022',
-                'poster' => 'Eric Maglajos'
-            ),
-            array(
-                'news_pic' => 'img8',
-                'title' => 'info2',
-                'desc' => 'This is a description',
-                'date' => 'November-22-2022',
-                'poster' => 'Eric Maglajos'
-            ),
-            array(
-                'news_pic' => 'img2',
-                'title' => 'info3',
-                'desc' => 'This is a description',
-                'date' => 'November-22-2022',
-                'poster' => 'Eric Maglajos'
-            ),array(
-                'news_pic' => 'img10',
-                'title' => 'info4',
-                'desc' => 'This is a description',
-                'date' => 'November-22-2022',
-                'poster' => 'Eric Maglajos'
-            )
-        );
+    public function addNews($news)
+    {
+        $table = 'news';
+        $data = array();
+        foreach ($news as $values) {
+            $row = array();
+            foreach ($this->news_tbl as $col) {
+                $row[] = isset($values[$col]) ? $values[$col] : '';
+            }
+            $data[] = $row;
+        }
+        $res = $this->insertTableRow($table, $this->news_tbl, $data);
 
-        return $data;
+        return $res;
     }
+
+    public function getNewsList()
+    {
+        $sql = "
+            SELECT *
+            FROM news
+            ORDER BY News_Date, News_Title
+        ";
+        $list = $this->getDataFromTable($sql);
+
+        return $list;
+    }    
 }
-
-?>
