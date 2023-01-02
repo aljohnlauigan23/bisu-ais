@@ -206,6 +206,7 @@ class SQL_Alumni extends DB_Connect {
         $table = 'users';
         # Has Password
         $alumni['Password'] = hashPassword($alumni['Password']);
+        $alumni['Birth_Date'] = strtotime($alumni['Birth_Date']);
         $data = array();
         $row = array();
         foreach ($this->users_tbl as $col) {
@@ -233,6 +234,7 @@ class SQL_Alumni extends DB_Connect {
 
     public function addAlumniData($list)
     {
+        $created = 0;
         foreach ($list as $alumni) {
             # Get alumni Course_Key, only add alumni if course is available
             $course_key = 0;
@@ -268,25 +270,27 @@ class SQL_Alumni extends DB_Connect {
                 $user_key = $this->getUserKey($alumni['Email']);
                 if ($user_key > 0) {
                     # Do not proceed if existing user, email exists
-                    return false;
+                    continue;
                 }
             } else {
                 # Do not proceed if email and username are blank
-                return false;
+                continue;
             }
             $user_key = 0;
-            $this->addUser($alumni);
-            $user_key = $this->getUserKey($alumni['Email']);
-            
-            if ($user_key < 1) {
-                # Do not proceed alumni user is not successfully created
-                return false;
+            $res = $this->addUser($alumni);
+            if ($res) {
+                # Only add alumni if user is successfully created
+                $user_key = $this->getUserKey($alumni['Email']);
+                if ($user_key > 0) {
+                    $alumni['User_Key'] = $user_key;
+                    # Add alumni
+                    $this->addAlumni($alumni);
+                    $created++;
+                }
             }
-            $alumni['User_Key'] = $user_key;
+        } 
 
-            # Add alumni
-            $this->addAlumni($alumni);
-        }        
+        return $created;
     }
 
     public function getBatchAlumniList($batch_key)

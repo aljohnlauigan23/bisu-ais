@@ -19,6 +19,8 @@ if (isset($_GET['menu']) && !empty($_GET['menu'])) {
                 if (isset($_POST['Course_Code']) && $_POST['Course_Code'] != '' && isset($_POST['Course_Name']) && $_POST['Course_Name'] != '') {
                     $course = array($_POST);
                     $sql->addCourse($course);
+                } else {
+                    $_POST['warning'] = 'Enter Course Code and Code Name';
                 }
             }
             $_GET['table'] = $sql->getCoursesTableData();
@@ -35,13 +37,18 @@ if (isset($_GET['menu']) && !empty($_GET['menu'])) {
                         $list = getCSVFileData($csv_file, "\t");
                         //print "<pre>";
                         //print_r($list);
-                        $sql->addAlumniData($list);
-                        $_SESSION['batches'] = $sql->getBatches();
-                        $_POST['success'] = 'Alumni data from "'.$_FILES['upload_csv']['name'].'" file has been successfully saved.';
-                        # Get Course and Batch name from the first alumni to be used as default
-                        if (isset($list[0]['Course']) && isset($list[0]['Batch'])) {
-                            $_POST['course_sel'] = $list[0]['Course'];
-                            $_POST['batch_sel'] = $list[0]['Batch'];
+                        $created = $sql->addAlumniData($list);
+                        $created_info = $created.'/'.count($list);
+                        if ($created > 0) {
+                            $_SESSION['batches'] = $sql->getBatches();
+                            $_POST['success'] = 'Alumni data  ('.$created_info.') from "'.$_FILES['upload_csv']['name'].'" file has been successfully saved.';
+                            # Get Course and Batch name from the first alumni to be used as default
+                            if (isset($list[0]['Course']) && isset($list[0]['Batch'])) {
+                                $_POST['course_sel'] = $list[0]['Course'];
+                                $_POST['batch_sel'] = $list[0]['Batch'];
+                            }
+                        } else {
+                            $_POST['warning'] = 'No alumni data ('.$created_info.') saved. Alumni may already exist.';
                         }
                     }
                 } else {

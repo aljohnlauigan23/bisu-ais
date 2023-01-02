@@ -8,14 +8,19 @@ $_SESSION['news_list'] = array(
 );
 //$_SESSION['news_list'] = array();
 
+$_SESSION['departments'] = array();
+$departments = array(
+    'ICT',
+    'ITD',
+);
+foreach ($departments as $dept) {
+    $desc = defined($dept) ? constant($dept): ucfirst($dept).' Department';
+    $_SESSION['departments'][$dept] = $desc;
+}
+
 include_once 'models/sql_alumni.php';
 $sql = new SQL_Alumni;
 $_SESSION['courses'] = $sql->getCourses();
-$_SESSION['departments'] = array();
-foreach ($_SESSION['courses'] as $dept => $courses) {
-    $desc = defined($dept) ? constant($dept): ucfisrt($dept).' Department';
-    $_SESSION['departments'][$dept] = $desc;
-}
 $_SESSION['batches'] = $sql->getBatches();
 
 include_once 'models/sql_events.php';
