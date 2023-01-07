@@ -9,7 +9,7 @@
                     <i class="bi bi-person-circle"></i> '.$_SESSION['logged']['First_Name'].'
                 </a>
                 <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
-                    <a href="profile.php?ukey="'.$_SESSION['logged']['User_Key'].' class="dropdown-item">Profile</a>
+                    <a href="profile.php?ukey='.$_SESSION['logged']['User_Key'].'" class="dropdown-item">Profile</a>
                     <a href="index.php?logout=1" class="dropdown-item">Logout</a>
                 </div>
             </div>
@@ -47,7 +47,7 @@
     } else {
         # Guest Mode
         $html .= '
-            <a href="index.php?menu=login" class="nav-item nav-link">
+            <a href="index.php?logout=1" class="nav-item nav-link">
                 Login
                 <i class="bi bi-box-arrow-left"></i>
             </a>

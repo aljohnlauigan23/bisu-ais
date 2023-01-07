@@ -2,8 +2,8 @@
     require_once 'views/header.php';
     require_once 'views/menu.php';
 ?>
-
-        <div class="container-fluid hero-header bg-light py-5 mb-5" style="background-image: url(bisu-img/home_background-adjusted.jpg); background-style: cover;">
+    <div style="margin:0;padding:0;width:100%;height:2vw;background:orange;"></div>
+        <div class="container-fluid hero-header bg-light py-5 mb-5" style="background-image: url(bisu-img/aa.jpg); background-repeat: no-repeat; background-size: cover;">
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
