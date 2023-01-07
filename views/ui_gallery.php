@@ -16,17 +16,17 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="img/project-5.jpg" alt="">
-                                <a class="project-title h5 mb-0" href="img/project-5.jpg" data-lightbox="project">
-                                    Memory
+                                <img class="img-fluid" src="gallery/BSIT/bsit.jpg" alt="">
+                                <a class="project-title h5 mb-0" href="gallery/BSIT/bsit.jpg" data-lightbox="project">
+                                    BSIT
                                 </a>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="img/project-1.jpg" alt="">
-                                <a class="project-title h5 mb-0" href="img/project-1.jpg" data-lightbox="project">
-                                    Wedding
+                                <img class="img-fluid" src="gallery/BSIT-FPSM/bsit-fpsm.png" alt="">
+                                <a class="project-title h5 mb-0" href="gallery/BSIT-FPSM/bsit-fpsm.png" data-lightbox="project">
+                                    BSIT-FPSM
                                 </a>
                             </div>
                         </div>
@@ -36,17 +36,17 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="img/project-2.jpg" alt="">
-                                <a class="project-title h5 mb-0" href="img/project-2.jpg" data-lightbox="project">
-                                    Portrait
+                                <img class="img-fluid" src="gallery/BS-ELEX/bs-elex.jpg" alt="">
+                                <a class="project-title h5 mb-0" href="gallery/BS-ELEX/bs-elex.jpg" data-lightbox="project">
+                                    BS-ELEX
                                 </a>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="img/project-6.jpg" alt="">
-                                <a class="project-title h5 mb-0" href="img/project-6.jpg" data-lightbox="project">
-                                    Travel
+                                <img class="img-fluid" src="gallery/BS-ELEC/bs-elec.webp" alt="">
+                                <a class="project-title h5 mb-0" href="gallery/BS-ELEC/bs-elec.webp" data-lightbox="project">
+                                    BS-ELEC
                                 </a>
                             </div>
                         </div>
@@ -56,17 +56,17 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="img/project-7.jpg" alt="">
-                                <a class="project-title h5 mb-0" href="img/project-7.jpg" data-lightbox="project">
-                                    Wedding
+                                <img class="img-fluid" src="gallery/BS-COMSCIE/bscomscie.jpg" alt="">
+                                <a class="project-title h5 mb-0" href="gallery/BS-COMSCIE/bscomscie.jpg" data-lightbox="project">
+                                    BS-COMSCIE
                                 </a>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="img/project-3.jpg" alt="">
-                                <a class="project-title h5 mb-0" href="img/project-3.jpg" data-lightbox="project">    
-                                    Memory
+                                <img class="img-fluid" src="gallery/ADMIN/admin.jpg" alt="">
+                                <a class="project-title h5 mb-0" href="gallery/ADMIN/admin.jpg" data-lightbox="project">    
+                                    ADMIN
                                 </a>
                             </div>
                         </div>
@@ -76,17 +76,17 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="img/project-4.jpg" alt="">
-                                <a class="project-title h5 mb-0" href="img/project-4.jpg" data-lightbox="project">
-                                    Fashion
+                                <img class="img-fluid" src="gallery/BISU-BC/bisu_bc.jpg" alt="">
+                                <a class="project-title h5 mb-0" href="gallery/BISU-BC/bisu_bc.jpg" data-lightbox="project">
+                                  BISU-BC
                                 </a>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="img/project-8.jpg" alt="">
-                                <a class="project-title h5 mb-0" href="img/project-8.jpg" data-lightbox="project">
-                                    Portrait
+                                <img class="img-fluid" src="gallery/Recent Added/recent_add.png" alt="">
+                                <a class="project-title h5 mb-0" href="gallery/Recent Added/recent_add.png" data-lightbox="project">
+                                RECENT ADDED
                                 </a>
                             </div>
                         </div>

@@ -97,7 +97,7 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
 
 # News page    
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'news') {
-    require_once 'views/ui_home.php';
+    require_once 'views/ui_news.php';
 
 # Gallery page
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'gallery') {    
