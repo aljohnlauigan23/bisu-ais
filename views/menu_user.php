@@ -47,7 +47,7 @@
     } else {
         # Guest Mode
         $html .= '
-            <a href="index.php?logout=1" class="nav-item nav-link">
+            <a href="index.php?menu=login" class="nav-item nav-link">
                 Login
                 <i class="bi bi-box-arrow-left"></i>
             </a>

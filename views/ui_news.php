@@ -22,10 +22,10 @@ $html = '
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="h-100">
                     <p class="text-primary text-uppercase mb-2">NEWS</p>
-                    <h1 class="display-6 mb-4">'.$news['title'].'</h1>
-                    <p>'.$news['desc'].'</p>
-                    <p>'.$news['date'].'</p>
-                    <p>'.$news['poster'].'</p>
+                    <h1 class="display-6 mb-4">'.$news['News_Title'].'</h1>
+                    <p>'.$news['News_Desc'].'</p>
+                    <p>'.$news['News_Date'].'</p>
+                    <p>'.$news['News_Author'].'</p>
                     <a class="btn btn-primary py-3 px-5" href="">Read More</a>
                 </div>
             </div>
