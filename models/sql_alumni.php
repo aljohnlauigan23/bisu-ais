@@ -469,7 +469,84 @@ class SQL_Alumni extends DB_Connect {
         $profile['Full_Name'] = $alumni['Last_Name'].', '.$alumni['First_Name'];
 
         return $profile;
+    }
 
+    public function addChat($chat, $user_key)
+    {
+        if ($chat != '') {
+            $table = 'chat';
+            $row = array(
+                'User_Key' => $user_key,
+                'Chat_Date' => time(),
+                'Chat_Msg' => $chat,
+            );
+            // print "<pre>"; print_r($row);
+            $res = $this->insertTableRow($table, array_keys($row), array($row));
+        }
+
+        return $res;
+    }
+
+    public function getChatData($user_key) 
+    {
+        $course_key = intval($_SESSION['logged_profile']['Course_Key']);
+        $batch_key = intval($_SESSION['logged_profile']['Batch_Key']);
+        $sql = "
+            SELECT 
+                First_Name, Last_Name, ch.User_Key, 
+                Chat_Msg, Chat_Date
+            FROM chat as ch
+            LEFT JOIN users as u ON ch.User_Key = u.User_Key
+            LEFT JOIN alumni as a ON u.User_Key = a.User_Key
+            LEFT JOIN batches as b ON a.Batch_Key = b.Batch_Key
+            LEFT JOIN courses as c ON b.Course_Key = c.Course_Key
+            WHERE a.Batch_Key = {$batch_key}
+                AND b.Course_Key = {$course_key}
+            ORDER BY Chat_Date
+            LIMIT 50
+        ";
+        $data = $this->getDataFromTable($sql);
+        $chats = array();
+        $cur_time = time();
+        foreach ($data as $row) {
+            $owner = ($row['User_Key'] == $user_key) ? 'You' : $row['First_Name'].' '.$row['Last_Name'];
+            $ago = $this->getChatAgoValue($cur_time, $row['Chat_Date']);
+            $chats[] = array(
+                'owner' => $owner,
+                'ago' => $ago,
+                'msg' => $row['Chat_Msg'],
+            );
+        }
+        //print "<pre>";
+        //print_r($chats);
+        
+        return $chats;
+    }
+
+    public function getChatAgoValue($cur_time, $chat_time)
+    {
+        $ago = '';
+        $diff = $cur_time - $chat_time;
+
+        # Seconds
+        if ($diff < 60) {
+            $t = $diff;
+            $unit = $t > 1 ? 'secs' : 'sec';
+
+        # Minutes
+        } elseif ($diff < (60*60)) {
+            $t = floor($diff / 60);
+            $unit = $t > 1 ? 'mins' : 'min';
+
+        # Hours
+        } elseif ($diff < (60*60*24)) {
+            $t = floor($diff / (60*60));
+            $unit = $t > 1 ? 'hrs' : 'hr';
+        }
+
+        $ago = "{$t}{$unit}";
+
+        return $ago;
     }
 
 }

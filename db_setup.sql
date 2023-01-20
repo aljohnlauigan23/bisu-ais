@@ -96,6 +96,19 @@ CREATE TABLE news (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 -- --------------------------------------------------------
 
+--
+-- Table structure for table chat
+--
+CREATE TABLE chat (
+  Chat_Key int(10) unsigned NOT NULL auto_increment,
+  User_Key int(10) unsigned NOT NULL,
+  Chat_Date int(10) NOT NULL,
+  Chat_Msg text NOT NULL,
+  PRIMARY KEY  (Chat_Key),
+  UNIQUE KEY tbl_unique (User_Key, Chat_Date)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+
 -- CREATE USER [IF NOT EXISTS] 'bisu'@'localhost' 
 -- IDENTIFIED BY 'B!su';
 

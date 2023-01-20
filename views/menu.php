@@ -29,10 +29,12 @@
             <a href="index.php?menu=home" class="navbar-brand bg-primary py-2 px-4 mx-3 d-none d-lg-block">
                 <h1 class="text-white">BISU-BC AIS</h1>
             </a>
-            <a href="index.php?menu=chat" class="nav-item nav-link">
-                        <i class="bi bi-chat-left-text"></i>
-                        Chat
-                    </a>
+            <?php if (!empty($_SESSION['logged']) && ($_SESSION['logged'] != 'guest') && ($_SESSION['logged']['User_Type'] != 'admin')): ?>
+                <a href="chat.php" class="nav-item nav-link">
+                    <i class="bi bi-chat-left-text"></i>
+                    Chat
+                </a>
+            <?php endif; ?>
             <div class="navbar-nav me-auto py-0">
                 <?php require_once 'views/menu_news.php' ?>
                 <?php require_once 'views/menu_user.php' ?>

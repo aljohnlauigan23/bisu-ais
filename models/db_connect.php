@@ -27,6 +27,7 @@ class DB_Connect {
         if (!empty($values)) {
             # Only insert table data when has values
             $sql = "INSERT INTO {$table} (".implode(',', $fields).") ".implode(', ', $values);
+            //print "<pre>$sql\n";
             if ($this->db->query($sql) === true) {
                 $success = true;
             } else {
