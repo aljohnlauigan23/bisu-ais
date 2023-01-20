@@ -35,7 +35,7 @@
                 <div class="row g-0 flex-lg-row-reverse">
                     <div class="col-sm-6">
                         <div class="team-img position-relative">
-                            <img class="img-fluid" src="bisu-img/association/vice_pres2" alt="">
+                            <img class="img-fluid" src="bisu-img/association/vice_pres2.jpg" alt="">
                             <p>Vice President, Administration and Finance </p>
                             <p>OIC Vice President, Academics and Quality Assurance </p>
                         </div>
@@ -47,7 +47,7 @@
                 <div class="row g-0 flex-sm-row-reverse">
                     <div class="col-sm-6">
                         <div class="team-img position-relative">
-                            <img class="img-fluid" src="bisu-img/association/campus_director" alt="">
+                            <img class="img-fluid" src="bisu-img/association/campus_director.jpg" alt="">
                             <p>Campus Director</p>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                 <div class="row g-0 flex-sm-row-reverse">
                     <div class="col-sm-6">
                         <div class="team-img position-relative">
-                            <img class="img-fluid" src="bisu-img/association/dean_ctas" alt="">
+                            <img class="img-fluid" src="bisu-img/association/dean_ctas.jpg" alt="">
                             <p>Dean of College of Technology and Allied Sciences</p>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                 <div class="row g-0 flex-sm-row-reverse">
                     <div class="col-sm-6">
                         <div class="team-img position-relative">
-                            <img class="img-fluid" src="bisu-img/association/dean_ccj" alt="">
+                            <img class="img-fluid" src="bisu-img/association/dean_ccj.jpg" alt="">
                             <p>Dean of College of Criminal Justice</p>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                 <div class="row g-0 flex-sm-row-reverse">
                     <div class="col-sm-6">
                         <div class="team-img position-relative">
-                            <img class="img-fluid" src="bisu-img/association/alumni_admin" alt="">
+                            <img class="img-fluid" src="bisu-img/association/alumni_admin.jpg" alt="">
                             <p>Director, Student Affairs and Services</p>
                             <p>Alumni Administrator</p>
                         </div>
