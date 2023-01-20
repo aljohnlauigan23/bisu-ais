@@ -10,8 +10,8 @@
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="row g-3 img-twice position-relative h-100">
-                    <div class="col-6">
+                <div class="row g-3 img-once position-relative h-100">
+                    <div class="col-8">
                         <img class="img-fluid bg-light p-3" src="bisu-img/news/<?php echo $_POST['news']['News_Image'] ?>" alt="">
                     </div>
                 </div>
