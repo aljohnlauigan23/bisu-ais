@@ -99,5 +99,5 @@ CREATE TABLE news (
 -- CREATE USER [IF NOT EXISTS] 'bisu'@'localhost' 
 -- IDENTIFIED BY 'B!su';
 
-GRANT ALL PRIVILEGES ON bisu_ais.* TO 'bisu'@'localhost';
-FLUSH PRIVILEGES;
+-- GRANT ALL PRIVILEGES ON bisu_ais.* TO 'bisu'@'localhost';
+-- FLUSH PRIVILEGES;

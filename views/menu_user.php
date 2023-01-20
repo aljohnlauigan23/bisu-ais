@@ -10,6 +10,7 @@
                 </a>
                 <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
                     <a href="index.php?menu=profile&ukey='.$_SESSION['logged']['User_Key'].'" class="dropdown-item">Profile</a>
+                    <a href="index.php?menu=association" class="dropdown-item">Association</a>
                     <a href="index.php?logout=1" class="dropdown-item">Logout</a>
                 </div>
             </div>
