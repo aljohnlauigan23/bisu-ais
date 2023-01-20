@@ -1,13 +1,5 @@
 <?php
 
-$_SESSION['news_list'] = array(
-    '1' => 'Hudyaka sa Pasko',
-    '2' => 'Foundation Day',
-    '3' => 'End VAW',
-    '4' => 'Civil Service Month',
-);
-//$_SESSION['news_list'] = array();
-
 $_SESSION['departments'] = array();
 $departments = array(
     'ICT',

@@ -40,10 +40,13 @@ class DB_Connect {
     public function getDataFromTable($sql)
     {
         $data = array();
+        //print "<pre>$sql";
         $result = $this->db->query($sql);
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                $data[] = $row;
+        if ($result) {
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                }
             }
         }
 

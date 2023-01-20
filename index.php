@@ -97,7 +97,32 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
 
 # News page    
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'news') {
+    include_once 'models/sql_news.php';
+    $sql = new SQL_News;
+    $_POST['news'] = $sql->getNewsData($_GET['nkey']);
     require_once 'views/ui_news.php';
+
+# Profile page    
+} else if(isset($_GET['menu']) && $_GET['menu'] == 'profile') {
+    include_once 'models/sql_alumni.php';
+    $sql = new SQL_Alumni;
+    if (intval($_GET['ukey']) > 0) {
+        $_POST['profile_fields'] = array(
+            'Batch' => false,
+            'Course_Name' => false,
+            'Email' => true,
+            'Address' => true,
+            'Position' => true,
+            'Employment_Status' => true,
+            'Company_Name' => true,
+            'Company_Address' => true,
+        );
+        $_POST['profile'] = $sql->getUserProfileData($_GET['ukey']);
+    } else {
+        $_POST['profile'] = $sql->getAdminProfile();
+    }
+
+    require_once 'views/ui_profile.php';
 
 # Gallery page
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'gallery') {    

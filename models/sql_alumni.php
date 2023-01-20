@@ -421,6 +421,55 @@ class SQL_Alumni extends DB_Connect {
         }
 
         return $profile;
+    }   
+
+    public function getAdminProfile()
+    {
+        $profile = array(
+            'Image' => "./bisu-img/alumni/blank_profile_pic.jpg",
+            'Full_Name' => 'Admin',
+            'Position' => 'System Administrator',
+            'Email' => '',
+            'Address' => '',
+            'Employment_Status' => '',
+            'Company_Name' => '',
+            'Company_Address' => '',
+            'Batch' => '',
+            'Course_Name' => '',
+        );
+
+
+        return $profile;
+    }
+
+    public function getUserProfileData($ukey) 
+    {
+        $sql = "
+            SELECT *
+            FROM users as u
+            LEFT JOIN alumni as a ON u.User_Key = a.User_Key
+            LEFT JOIN batches as b ON a.Batch_Key = b.Batch_Key
+            LEFT JOIN courses as c ON b.Course_Key = c.Course_Key
+            WHERE u.User_Key = {$ukey}
+        ";
+        $data = $this->getDataFromTable($sql);
+        $alumni = $data[0];
+
+        # Profile Picture
+        $blank_pic = "./bisu-img/alumni/blank_profile_pic.jpg";
+        $pic_fname = preg_replace('/(\s|\.)+/', '', $alumni['Last_Name']).'_'.preg_replace('/(\s|\.)+/', '', $alumni['First_Name']);
+        $pic_fpath = "./bisu-img/alumni/{$alumni['Course_Code']}/{$pic_fname}.jpg";
+        //print "<pre>$pic_fpath\n";
+        if (!is_file($pic_fpath)) {
+            $pic_fpath = $blank_pic;
+        }
+
+        $profile = $alumni;
+        $profile['Image'] = $pic_fpath;
+        $profile['Full_Name'] = $alumni['Last_Name'].', '.$alumni['First_Name'];
+
+        return $profile;
+
     }
 
 }

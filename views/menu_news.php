@@ -11,7 +11,7 @@
                     <div class="dropdown-menu rounded-0 shadow-sm border-0 m-0">
         ';
         foreach ($_SESSION['news_list'] as $news) {
-            $html .= '<a href="index.php?news='.$news['News_Key'].'" class="dropdown-item">'.$news['News_Title'].'</a>';
+            $html .= '<a href="index.php?menu=news&nkey='.$news['News_Key'].'" class="dropdown-item">'.$news['News_Title'].'</a>';
         }
         $html .= '
                     </div>

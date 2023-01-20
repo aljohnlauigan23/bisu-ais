@@ -47,4 +47,22 @@ class SQL_News extends DB_Connect {
 
         return $list;
     }    
+
+    public function getNewsData($news_key) 
+    {
+        $sql = "
+            SELECT 
+                n.*,
+                if (n.User_Key > 0, concat(First_Name, ' ', Last_Name), 'Admin') as News_Author
+            FROM news as n
+            LEFT JOIN users as u ON n.User_Key = u.User_Key
+            WHERE News_Key = {$news_key}
+        ";
+        $data = $this->getDataFromTable($sql);
+        $data = $data[0];
+
+        return $data;
+
+    }
+
 }
