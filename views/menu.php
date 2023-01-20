@@ -36,9 +36,9 @@
             <div class="navbar-nav me-auto py-0">
                 <?php require_once 'views/menu_news.php' ?>
                 <?php require_once 'views/menu_user.php' ?>
-                <?php if (!empty($_SESSION['logged']) && $_SESSION['logged']['User_Type'] != 'admin' && isset($_GET["menu"]) && $_GET["menu"] != "chat"): ?>
+                <?php //if (!empty($_SESSION['logged']) && $_SESSION['logged']['User_Type'] != 'admin' && isset($_GET["menu"]) && $_GET["menu"] != "chat"): ?>
                     
-                <?php endif; ?>
+                <?php //endif; ?>
             </div>
         </div>
     </nav>

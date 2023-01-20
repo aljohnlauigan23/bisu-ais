@@ -34,8 +34,12 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'login') {
         } else {
             $_POST['danger'] = "Invalid Login.";
         }
-    } elseif (!empty($_SESSION['logged'])) {
+    } elseif (!empty($_SESSION['logged']) && $_SESSION['logged'] != 'guest') {
         $valid = true;
+    } else {
+        unset($_SESSION['logged']);
+        require_once 'views/login.php';
+        exit;
     }
 
     if (!$valid) {
@@ -101,6 +105,13 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
     $sql = new SQL_News;
     $_POST['news'] = $sql->getNewsData($_GET['nkey']);
     require_once 'views/ui_news.php';
+
+# Association page    
+} else if(isset($_GET['menu']) && $_GET['menu'] == 'association') {
+    //include_once 'models/sql_news.php';
+    //$sql = new SQL_News;
+    //$_POST['news'] = $sql->getNewsData($_GET['nkey']);
+    require_once 'views/ui_association.php';
 
 # Profile page    
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'profile') {
