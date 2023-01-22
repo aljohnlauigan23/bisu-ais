@@ -14,9 +14,9 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
 
                     <div class="row g-0 flex-sm-row mb-5">
-                        <div class="col-sm-12">
+                        <div class="col-sm-8">
                             <div class="team-img position-relative">
-                                <img class="img-fluid" src="bisu-img/association/suc_president.jpg" width="50%" alt="">
+                                <img class="img-fluid" src="bisu-img/association/suc_president.jpg" width="60%" alt="">
                                 <p class="h4 text-=primary">Atty. Anthony Penaso</p>
                                 <p>University President</p>
                             </div>
@@ -24,38 +24,44 @@
                     </div>
 
                     <div class="row g-0 flex-sm-row mb-5">
-                        <div class="col-sm-6 p-3">
+                        <div class="col-sm-4 p-3">
                             <div class="team-img position-relative">
                                 <img class="img-fluid" src="bisu-img/association/vice_pres1.jpg" alt="">
                                 <p>Vice President, Student Affairs and Services</p>
                             </div>
                         </div>
-                        <div class="col-sm-6 p-3">
+                        <div class="col-sm-4 p-3">
                             <div class="team-img position-relative">
                                 <img class="img-fluid" src="bisu-img/association/vice_pres2.jpg" alt="">
                                 <p>Vice President, Administration and Finance </p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 p-3">
+                            <div class="team-img position-relative">
+                                <img class="img-fluid" src="bisu-img/association/vice_pres2.jpg" alt="">
                                 <p class="m-0 p-0">OIC Vice President, Academics and Quality Assurance </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="row g-0 flex-sm-row mb-5">
-                        <div class="col-sm-12">
+                        <div class="col-sm-10">
                             <div class="team-img position-relative">
-                                <img class="img-fluid" src="bisu-img/association/campus_director.jpg" width=""alt="">
+                                <img class="img-fluid" src="bisu-img/association/campus_director.jpg" width="50%"alt="">
                                 <p>Campus Director</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="row g-0 flex-sm-row mb-5">
-                        <div class="col-sm-6 p-3">
+                        <div class="col-sm-5 p-3">
                             <div class="team-img position-relative">
                                 <img class="img-fluid" src="bisu-img/association/dean_ctas.jpg" alt="">
                                 <p>Dean of College of Technology and Allied Sciences</p>
                             </div>
                         </div>
-                        <div class="col-sm-6 p-3">
+                        <div class="col-sm-5 p-3">
                             <div class="team-img position-relative">
                                 <img class="img-fluid" src="bisu-img/association/dean_ccj.jpg" alt="">
                                 <p>Dean of College of Criminal Justice</p>
@@ -64,7 +70,7 @@
                     </div>
 
                     <div class="row g-0 flex-sm-row mb-5">
-                        <div class="col-sm-12">
+                        <div class="col-sm-8">
                             <div class="team-img position-relative">
                                 <img class="img-fluid" src="bisu-img/association/alumni_admin.jpg" width="50%" alt="">
                                 <p>Director, Student Affairs and Services</p>
