@@ -442,6 +442,56 @@ class SQL_Alumni extends DB_Connect {
         return $profile;
     }
 
+    public function updateUserEmail($email, $user_key)
+    {
+        $sql = "
+            UPDATE users
+            SET Email = '$email'
+            WHERE User_Key = $user_key
+        ";
+        //print "<pre>$sql\n";
+        if ($this->db->query($sql) === true) {
+            $success = true;
+        } else {
+            $success = $this->db->error;
+        }
+        //var_dump($success);
+
+        return $success;
+    }
+
+    public function updateAlumniProfile($data, $user_key)
+    {
+        //print "<pre> $user_key\n"; print_r($data); print_r($fields); exit;
+        $alumni_fields = array(
+            'Address',
+            'Position',
+            'Employment_Status',
+            'Company_Name',
+            'Company_Address',
+        );
+        $updated_fields = array();
+        foreach ($alumni_fields as $col) {
+            $updated_fields[] = "$col='{$data[$col]}'";
+        }
+        $sql = "
+            UPDATE alumni
+            SET ".implode(', ', $updated_fields)."
+            WHERE User_Key = $user_key
+        ";
+        //print "<pre>$sql\n";
+        if ($this->db->query($sql) === true) {
+            $success = true;
+        } else {
+            $success = $this->db->error;
+        }
+        //var_dump($success);
+        $email_res = $this->updateUserEmail($data['Email'], $user_key);
+        $success = ($success === true && $email_res !== true) ? $email_res : $success;
+
+        return $success;
+    }
+
     public function getUserProfileData($ukey) 
     {
         $sql = "
@@ -542,6 +592,9 @@ class SQL_Alumni extends DB_Connect {
         } elseif ($diff < (60*60*24)) {
             $t = floor($diff / (60*60));
             $unit = $t > 1 ? 'hrs' : 'hr';
+        } else {
+            $t = floor($diff / (60*60*24));
+            $unit = $t > 1 ? 'days' : 'day';
         }
 
         $ago = "{$t}{$unit}";

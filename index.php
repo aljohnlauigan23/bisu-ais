@@ -13,7 +13,16 @@ function logout()
     require_once 'views/login.php';
     exit;
 
+
 }
+
+
+
+if (!isset($_GET['department'])) {
+    $_GET['department'] = 'all';
+}
+
+
 
 # Login
 if (isset($_GET['menu']) && $_GET['menu'] == 'login') {
@@ -117,17 +126,30 @@ if (isset($_GET['menu']) && $_GET['menu'] == 'alumni') {
 } else if(isset($_GET['menu']) && $_GET['menu'] == 'profile') {
     include_once 'models/sql_alumni.php';
     $sql = new SQL_Alumni;
+
+    
+    $_POST['profile_fields'] = array(
+        'Batch' => false,
+        'Course_Name' => false,
+        'Email' => true,
+        'Address' => true,
+        'Position' => true,
+        'Employment_Status' => true,
+        'Company_Name' => true,
+        'Company_Address' => true,
+    );
+    //print "<pre>"; print_r($_GET); print_r($_POST); exit;
+
+    if (isset($_POST['save']) && $_POST['save'] == 'profile') {
+        $updated = $sql->updateAlumniProfile($_POST, $_GET['ukey']);
+        if (!$updated) {
+            $_POST['danger'] = 'Something went wrong upon saving user profile.';
+        } else {
+            header('Location: index.php?menu=profile&ukey='.$_GET['ukey']);
+        }
+    }
+
     if (intval($_GET['ukey']) > 0) {
-        $_POST['profile_fields'] = array(
-            'Batch' => false,
-            'Course_Name' => false,
-            'Email' => true,
-            'Address' => true,
-            'Position' => true,
-            'Employment_Status' => true,
-            'Company_Name' => true,
-            'Company_Address' => true,
-        );
         $_POST['profile'] = $sql->getUserProfileData($_GET['ukey']);
     } else {
         $_POST['profile'] = $sql->getAdminProfile();

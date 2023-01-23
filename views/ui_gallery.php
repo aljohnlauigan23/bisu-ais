@@ -56,7 +56,7 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="gallery/BS-COMSCIE/bscomscie.jpg" alt="">
+                                <img class="img-fluid" src="gallery/BS-COMSCI/bscomscie.jpg" alt="">
                                 <a class="project-title h5 mb-0" href="gallery/BS-COMSCIE/bscomscie.jpg" data-lightbox="project">
                                     BS-COMSCIE
                                 </a>
@@ -84,7 +84,8 @@
                         </div>
                         <div class="col-12">
                             <div class="project-item">
-                                <img class="img-fluid" src="gallery/Recent Added/recent_add.png" alt="">
+                                <img class="img-fluid" src="bisu-img/news/Earth_Day_2022.jpg" alt="">
+                                <img class="img-fluid" src="bisu-img/news/Charter_Days_2022.jpeg" alt="">
                                 <a class="project-title h5 mb-0" href="gallery/Recent Added/recent_add.png" data-lightbox="project">
                                 RECENT ADDED
                                 </a>

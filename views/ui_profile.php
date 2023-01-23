@@ -8,6 +8,7 @@ require_once 'views/menu.php';
 <!-- Profile Start -->
 <div class="container-xxl py-5">
     <div class="container">
+        <?php require_once 'views/ui_alert.php' ?>
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="row g-3 img-once position-relative h-100">
@@ -24,7 +25,7 @@ require_once 'views/menu.php';
                     <h1 class="display-6 mb-4"><?php echo $_POST['profile']['Full_Name'] ?></h1>
 
                     <?php if (intval($_GET['ukey']) > 0): ?>
-                        <form action="index.php?menu=profile" method="POST">
+                        <form action="index.php?menu=profile&ukey=<?php echo $_GET['ukey'] ?>" method="POST">
                         <div class="row g-3">
                             <?php foreach ($_POST['profile_fields'] as $field => $editable) : ?>
                                 <div class="col-12 m-1">
@@ -40,8 +41,7 @@ require_once 'views/menu.php';
                                 </div>
                             <?php endforeach; ?>
                             <div class="col-12 text-center">
-                                <input type="hidden" name="add" value="course" />
-                                <button class="btn btn-primary py-3 px-5" type="submit" name="edit" value="Edit">Save</button>
+                                <button class="btn btn-primary py-3 px-5" type="submit" name="save" value="profile">Save</button>
                             </div>
                         </div>
                     </form> 
